@@ -1,0 +1,118 @@
+--------------------------------------------------------------------------------
+sql injection fille de sécurité dune base de données ou SQL fishing
+
+certaines connaissances basiques du langage SQL.
+pour exploiter une injection sql.
+
+
+admin » et le mot de passe par défaut « password ». pour dvwa
+
+types/méthodes 
+
+
+
+blind based ( basé aveule) sql injection
+détourne la requete sql 
+injecte des morceaux sql qui vont retourne caractere par caractere ce que cherche lattaquant
+
+error based  basé erreur
+ permet de détourner la requête SQL  et d'injecter des morceaux qui vont retourner champ par champ ce que l'on cherche à extraire de la base de données. 
+ 
+ union based  basé détourne la requete sql et retourne lensemble de données extraite de la base de données
+ 
+ stacked queries faille dans le fichier de configuration du serveur 
+ 
+ --------------------------------------------------------------------------------
+ google dorks: définition :search string that uses advanced search operators to find information
+ 
+ google limitera  les resultats a ces site web 
+ aide site:www.google.com
+ va trouver des pages  apropos de laide dans google.com
+ 
+ 
+ dorks
+ 
+ 
+ [info:www.site.com] avec ou sans []
+ présenter des informations que Google a sur cette page Web.
+ 
+ [link:www.google.com]
+ listera les pages Web qui ont des liens vers la page Web spécifiée
+ 
+  [inurl:google search]
+ limite les resultat  aux document dun certain url et un certain contenu dans le url 
+  [inurl:danslurl danslecodument]
+  retourne les documents qui ont google dans leur url et recherche dans le document le mot dansledocuments 
+ 
+
+
+tester le site 
+
+ tester a la fin du site ' 
+ If this url throws an error or reacts in an unexpected manner THAT IT
+ 
+ http://www.testing.com/books=1 enleve  le 1 et mettre '
+ returns an error message like 'Internal Server Error' or a blank page or any other unexpected error messager  
+ enleve  le 1 et mettre: ' or 1=1;--
+ 
+ 
+ tester dans le formulaire
+ '
+ "
+ ' or 1=1;--
+
+ 
+ 
+ xxx@xxx.xxx
+ xxx') OR 1 = 1 -- ]
+ 
+ 
+ sqlmap 
+ 
+ id=59 id parameter 59 = value 
+ 
+ 1. Sometimes sqlmap is unable to connect to the url at all.
+ it gets stuck at the first task of "testing connection to the target url". In such cases its helpful to use the "--random-agent" option
+ 
+ For urls that are not in the form of param=value sqlmap cannot automatically know where to inject.
+like http://www.site.com/class_name/method/43/80. 
+ In such cases sqlmap needs to be told the injection point marked by a *
+ --> 43*
+ 
+ sqlmap -u/ --url pour url
+ --time-sec defaut 5 speed up the process (accelerer le ) mettre plus
+ 
+ --dbs trouver la base de donneés
+ 
+ -D acuart base de donnes a spécifier 
+ --tables lister les tables
+ 
+ -T users tables a énumere r
+  --columns columns a enumerer
+ ou -T nom_table
+
+
+ 
+ -C email,name,pass  columns  a enumerer dune talbes
+ --dump déverse les columns 
+ 
+ --dump-all deverse (decharge) tout les  entrée de tables 
+ 
+ --------------------------------------------------------------------------------
+  
+ - -current-user  (pour connaître l'utilisateur actuel de la base)
+ - -passwords  (pour connaître le mot de passe correspondant à l'utilisateur actuel)
+ 
+ - le nom de l'utilisateur courant (--current-user) ;
+
+- le nom de la base de données courante (--current-db) ;
+ 
+ - si l'utilisateur de la base de données est administrateur (--is-dba).
+ 
+ --dbms=mysql
+ 
+ -g specifie le dork google  
+  limiter uniquement aux 100 premiers résultats par défaut, ainsi que sur les requêtes HTTP GET.
+  
+  
+ -b". It will try to find the exact banner of the database server.
